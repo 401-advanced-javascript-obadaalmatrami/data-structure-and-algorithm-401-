@@ -1,34 +1,14 @@
 'use strict';
 
-class Array {
-    constructor() {
-        this.length = 0;
-        this.data = {};
+const shiftArray = (arr, newItem) => {
+    for (let i = 0; i <= arr.length - 1; i++) {
+        arr[i + 1] = arr[i];
     }
-
-    reindex() {
-        let data = Object.keys(this.data).sort().reduce((acc, val, idx) => {
-            acc[idx] = this.data[val];
-            return acc;
-        }, {});
-
-        this.length = Object.keys(data).length;
-        this.data = data;
-    }
-
-    push(item) {
-        if (arguments.length === 1) {
-            this.data[this.length++] = item;
-        }
-        return this.length;
-    }
-    shift() {
-        if (!this.data[0]) { return undefined; }
-        let item = this.data[0];
-        delete this.data[0];
-        this.reindex();
-        return item;
-    }
+    arr[0] = newItem;
+    return arr;
+};
 
 
-}
+
+
+module.export = shiftArray;

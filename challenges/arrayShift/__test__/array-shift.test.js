@@ -1,44 +1,19 @@
 'use strict';
-const arr = require('../lib/array-shift.js');
-
-describe('List', () => {
-
-    let testArray = ['1', '4', '6', '8', '10'];
-    let loadArray = () => {
-        let thisList = new List();
-        for (let i = 0; i <= testArray.length - 1; i++) {
-            thisList.push(testArray[i]);
-        }
-        return thisList;
-    };
-
-    it('push() keeps the list the same if no element is pushed', () => {
-        let myarray = loadArray();
-        expect(myarray.length).toEqual(4);
-        myarray.push();
-        expect(myarray.length).toEqual(5);
-    });
-
-    it('push() increments the .length property', () => {
-        let myList = loadArray();
-        expect(myList.length).toEqual(3);
-    });
-
-    it('push() adds an element to the list', () => {
-        let myarray = loadArray();
-        myarray.push('FOO');
-        expect(myarray.data[myarray.length - 1]).toEqual('FOO');
-    });
 
 
-    it('shift() returns the first item', () => {
-        let myarray = loadArray();
-        expect(myarray.shift()).toEqual(testArray[0]);
-    });
+const arrayShift = require('../lib/array-shift.js');
 
-    it('shift() decrements .length property by 1', () => {
-        let myarray = loadArray();
-        myarray.shift();
-        expect(myarray.length).toEqual(2);
+describe('array shift module', () => {
+    let arr1 = [2, 4, 6, 8];
+    let arr2 = [4, 8, 15, 23, 42];
+    let newItem = 5;
+
+    describe(' shift the array ', () => {
+        test('shift arr1', () => {
+            expect(shiftArray(arr1, newItem)).toEqual([5, 2, 4, 6, 8]);
+        });
+        test('shift arr2', () => {
+            expect(shiftArray(arr2, newItem)).toEqual([5, 4, 8, 15, 23, 42]);
+        });
     });
 });

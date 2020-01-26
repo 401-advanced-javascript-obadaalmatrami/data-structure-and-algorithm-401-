@@ -1,56 +1,51 @@
 'use strict';
 
-const { LinkedList } = require('../ll-insertions/ll-insertions.js');
+const LinkedList = require('../ll-insertions/ll-insertions.js');
 
-let linkedList;
+let newLinkedlist = new LinkedList();
 
-beforeEach(() => linkedList = new LinkedList());
+describe('tests the  nodes we create', () => {
 
-describe('linked-list', () => {
-    it('can instantiate an empty linked-list', () => {
-        expect(linkedList.hasOwnProperty('head')).toBeTruthy();
-        expect(linkedList.head).toBeNull();
-        expect(linkedList.toString()).toEqual('[]');
+    beforeEach(() => {
+        newLinkedlist = new LinkedList();
     });
 
-    it('can insert a node to the  linked list', () => {
-        const testValue = 67;
-        linkedList.insert(testValue);
-
-        expect(linkedList.head.value).toEqual(testValue);
-        expect(linkedList.toString()).toEqual(`[${testValue}]`);
+    it('add a node to the end of the linked list', () => {
+        newLinkedlist.append(1);
+        expect(newLinkedlist.size).toEqual(1);
     });
 
-    it('create a single linked list with three nodes', () => {
-        const first = 67;
-        const second = 92;
-        const third = 97;
-
-        linkedList.insert(first);
-        linkedList.insert(second);
-        linkedList.insert(third);
-
-        expect(linkedList.head.value).toEqual(third);
-        expect(linkedList.toString()).toEqual(`[${third}, ${second}, ${first}]`);
+    it('add multiple nodes to the end of linked list', () => {
+        newLinkedlist.append(2);
+        newLinkedlist.append(4);
+        expect(newLinkedlist.size).toEqual(2);
     });
 
-    it('list includes() a given value after insertion', () => {
-        const first = 67;
-        const second = 92;
-
-        linkedList.insert(first);
-        expect(linkedList.includes(first)).toEqual(true);
-
-        linkedList.insert(second);
-        expect(linkedList.includes(first)).toEqual(true);
-        expect(linkedList.includes(second)).toEqual(true);
+    it('insert node before the node in the middle of linked list', () => {
+        newLinkedlist.append(2);
+        newLinkedlist.append(4);
+        newLinkedlist.insertBeforeindex(4, 3);
+        expect(newLinkedlist.head.next.value).toEqual(3);
     });
 
-    it('list does not include non-inserted value', () => {
-        const inserted = 67;
-        const notInserted = 92;
+    it('insert node before the first node of linked list', () => {
+        newLinkedlist.append(2);
+        newLinkedlist.append(4);
+        newLinkedlist.insertBeforeindex(2, 0);
+        expect(newLinkedlist.head.value).toEqual(0);
+    });
 
-        linkedList.insert(inserted);
-        expect(linkedList.includes(notInserted)).toEqual(false);
+    it('insert after  node in the middle ', () => {
+        newLinkedlist.append(2);
+        newLinkedlist.append(4);
+        newLinkedlist.insertAfterindex(2, 3);
+        expect(newLinkedlist.head.next.value).toEqual(3);
+    });
+
+    it('insert node after the last node ', () => {
+        newLinkedlist.append(2);
+        newLinkedlist.append(4);
+        newLinkedlist.insertAfterindex(4, 7);
+        expect(newLinkedlist.head.next.next.value).toEqual(7);
     });
 });

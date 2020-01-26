@@ -1,49 +1,72 @@
 'use strict';
 
 class Node {
-    constructor(value, next = null) {
+    constructor(value) {
         this.value = value;
-        this.next = next;
-
+        this.next = null;
     }
 }
 
 class LinkedList {
     constructor() {
         this.head = null;
+        this.size = 0;
     }
 
-    insert(value) {
-        const node = new Node(value, this.head);
-        this.head = node;
-    }
+    append(value) {
 
-
-    includes(value) {
-        let current = this.head;
-        while (current) {
-            if (current.value === value) {
-                return true;
+        if (this.head === null) {
+            this.head = new Node(value);
+        } else if (this.next !== null) {
+            let currentNode = this.head;
+            while (currentNode.next !== null) {
+                currentNode = currentNode.next;
             }
-            current = current.next;
+            currentNode.next = new Node(value);
         }
-        return false;
+        this.size++;
     }
 
+    insertBeforeindex(value, newValue) {
+        var node = new Node(newValue);
+        let currentNode = this.head;
+        let previousNode = null;
 
 
-    toString() {
-        const list = [];
-        let current = this.head;
-        while (current) {
-            list.push(current.value);
-            current = current.next;
+        while (currentNode) {
+            if (currentNode.value === value) {
+                if (previousNode === null) {
+                    this.head = node;
+                } else {
+                    previousNode.next = node;
+                }
+                node.next = currentNode;
+                break;
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.next;
         }
-        return `[${list.join(', ')}]`
+        this.size++;
     }
 
+    insertAfterindex(value, newValue) {
+        var insertedNode = new Node(newValue);
+        let currentNode = this.head;
+
+        while (currentNode) {
+            if (currentNode.value === value) {
+                insertedNode.next = currentNode.next;
+                currentNode.next = insertedNode;
+                break;
+            }
+            if (currentNode.next === null) {
+                currentNode.next = insertedNode;
+            }
+            currentNode = currentNode.next;
+        }
+        this.size++;
+    }
 }
 
-console.log('linked-list', 8, 10);
 
-module.exports = { LinkedList, Node };
+module.exports = LinkedList;

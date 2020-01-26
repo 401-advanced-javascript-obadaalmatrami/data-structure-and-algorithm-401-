@@ -10,7 +10,7 @@ class Node {
 class LinkedList {
     constructor() {
         this.head = null;
-        this.size = 0;
+        this.counter = 0;
     }
 
     append(value) {
@@ -24,7 +24,7 @@ class LinkedList {
             }
             currentNode.next = new Node(value);
         }
-        this.size++;
+        this.counter++;
     }
 
     insertBeforeindex(value, newValue) {
@@ -46,7 +46,7 @@ class LinkedList {
             previousNode = currentNode;
             currentNode = currentNode.next;
         }
-        this.size++;
+        this.counter++;
     }
 
     insertAfterindex(value, newValue) {
@@ -64,7 +64,7 @@ class LinkedList {
             }
             currentNode = currentNode.next;
         }
-        this.size++;
+        this.counter++;
     }
 }
 

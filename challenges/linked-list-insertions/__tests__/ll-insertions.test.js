@@ -12,13 +12,13 @@ describe('tests the  nodes we create', () => {
 
     it('add a node to the end of the linked list', () => {
         newLinkedlist.append(1);
-        expect(newLinkedlist.size).toEqual(1);
+        expect(newLinkedlist.counter).toEqual(1);
     });
 
     it('add multiple nodes to the end of linked list', () => {
         newLinkedlist.append(2);
         newLinkedlist.append(4);
-        expect(newLinkedlist.size).toEqual(2);
+        expect(newLinkedlist.counter).toEqual(2);
     });
 
     it('insert node before the node in the middle of linked list', () => {

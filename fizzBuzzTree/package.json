@@ -1,0 +1,19 @@
+{
+    "name": "fizzBuzzTree",
+    "version": "1.0.0",
+    "description": "",
+    "main": "fizz-buzz-tree.js",
+    "scripts": {
+        "test": "jest --verbose --coverage --watch-All",
+        "lint": "eslint '**/*.js' --fix",
+        "start": "node fizz-buzz-tree.js"
+
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "eslint": "^6.8.0",
+        "jest": "^25.1.0"
+    }
+}

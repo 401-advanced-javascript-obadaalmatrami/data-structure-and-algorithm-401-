@@ -1,0 +1,12 @@
+{
+  "name": "Merge-Sort",
+  "version": "1.0.0",
+  "description": "Merge Sort",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --coverage --watch-All"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

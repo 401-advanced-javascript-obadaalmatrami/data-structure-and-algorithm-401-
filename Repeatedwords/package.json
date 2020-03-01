@@ -5,7 +5,8 @@
   "main": "src/repeated-words.js",
   "scripts": {
     "start": "node src/repeated-words.js",
-    "test": "jest --verbose --coverage --watch-All"
+    "test": "jest --verbose --coverage --watch-All",
+    "eslint": "eslint --fix/* js"
   },
   "keywords": [],
   "author": "",
